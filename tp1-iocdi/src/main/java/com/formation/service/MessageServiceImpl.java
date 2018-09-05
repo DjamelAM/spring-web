@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import com.formation.dao.MessageDao;
 import com.formation.dao.MessageRepository;
 import com.formation.entity.Message;
-import com.formation.entity.MessageDto;
+import com.formation.model.MessageDto;
 
 /**
  * Implementation of {@link IFeedback} using the console as output

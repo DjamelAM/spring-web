@@ -3,7 +3,7 @@ package com.formation.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.formation.entity.MessageDto;
+import com.formation.model.MessageDto;
 
 /**
  * Interface to give feedback to the user
