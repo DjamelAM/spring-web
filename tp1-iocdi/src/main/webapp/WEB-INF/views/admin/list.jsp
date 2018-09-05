@@ -16,9 +16,7 @@
 </head>
 <body>
 
-	<nav>
-		<div class="row">
-			<div class="col-12">
+	
 				<nav class="navbar navbar-expand-lg navbar-light bg-light">
 					<!-- On ajoute un logo -->
 
@@ -44,10 +42,10 @@
 						</ul>
 					</div>
 				</nav>
-			</div>
-		</div>
-	</nav>
+			
 
+	
+	<div class="container">
 	<h1>Adminisatration des messages</h1>
 	<div class="row">
 		<div class="col-10">
@@ -73,6 +71,7 @@
 				</tbody>
 			</table>
 		</div>
+	</div>
 	</div>
 </body>
 </html>
