@@ -37,9 +37,9 @@
 					<div class="collapse navbar-collapse" id="navbarSupportedContent">
 						<!-- 	On ajoute l'effet onglet actuel					 -->
 						<ul class="nav nav-pills">
-							<li class="nav-item"><a class="nav-link active" href="#">Collaborateurs</a>
+							<li class="nav-item"><a class="nav-link active" href="http://localhost:8080/humancontact/admin">Admin</a>
 							</li>
-							<li class="nav-item"><a class="nav-link" href="#">Statistiques</a></li>
+							<li class="nav-item"><a class="nav-link" href="http://localhost:8080/humancontact/ajout">Ajout</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">Activités</a></li>
 						</ul>
 					</div>

@@ -2,8 +2,10 @@ package com.formation.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.formation.service.MessageService;
@@ -21,5 +23,15 @@ public class AdminController {
 		modelAndView.setViewName("admin/list");
 		modelAndView.addObject("messages", serv.findAllMessages());
 		return modelAndView;
+	}
+
+	@Controller
+	@RequestMapping("/ajout")
+	public class HelloWorldController {
+		@GetMapping("")
+		@ResponseBody
+		public String simple() {
+			return "Pas maintenant !";
+		}
 	}
 }
