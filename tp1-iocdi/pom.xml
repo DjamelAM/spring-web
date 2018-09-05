@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.formation</groupId>
 	<artifactId>tp1-iocdi</artifactId>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>tp1-iocdi</name>
 	<url>http://maven.apache.org</url>
@@ -88,5 +88,61 @@
 			<artifactId>spring-data-jpa</artifactId>
 			<version>2.0.9.RELEASE</version>
 		</dependency>
+		<!-- dépendances à spring-web et spring-web-mvc: -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+		</dependency>
+		<!-- dépendance à l’API servlet: -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
+	<!-- la configuration pour exécuter Jetty -->
+	<profiles>
+		<profile>
+			<id>jetty</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.jetty</groupId>
+						<artifactId>jetty-maven-plugin</artifactId>
+						<version>9.4.11.v20180605</version>
+						<configuration>
+							<useTestClasspath>true</useTestClasspath>
+							<stopKey>1</stopKey>
+							<stopPort>9999</stopPort>
+							<scanIntervalSeconds>5</scanIntervalSeconds>
+						</configuration>
+						<executions>
+							<execution>
+								<id>start-jetty</id>
+								<phase>pre-integration-test</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+							</execution>
+							<execution>
+								<id>stop-jetty</id>
+								<phase>post-integration-test</phase>
+								<goals>
+									<goal>stop</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
