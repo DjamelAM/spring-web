@@ -18,6 +18,7 @@ public class MessageDaoImpl implements MessageDao {
 
 	@Override
 	public void save(Message message1) {
+		message1.setEventTime(LocalDateTime.now());
 		em.persist(message1);
 	}
 
