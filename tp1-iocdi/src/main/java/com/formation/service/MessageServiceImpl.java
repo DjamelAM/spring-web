@@ -1,8 +1,6 @@
 package com.formation.service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,8 +19,8 @@ import com.formation.model.MessageDto;
  */
 @Service
 @Transactional
-public class MessageServiceImpl extends AbstractFeedback implements MessageService {
-	List<Message> feedbacks = new ArrayList<Message>();
+public class MessageServiceImpl implements MessageService {
+
 	// à utiliser
 	// KeyHolder keyHolder = new GeneratedKeyHolder();
 	@Autowired
@@ -50,10 +48,9 @@ public class MessageServiceImpl extends AbstractFeedback implements MessageServi
 
 	@Override
 	public List<MessageDto> findAllMessages() {
-		List<Message> messages = repo.findAll();
+		List<Message> messages = repo.findAllByOrderByEventTimeDesc();
 		// on utilise un stream pour ensuite convertir chaque message en
 		// messagedto
-		Collections.sort(messages, Collections.reverseOrder());
 		return messages.stream().map(e -> {
 			return convertMessageToMessageDto(e);
 		}).collect(Collectors.toList());
@@ -78,11 +75,11 @@ public class MessageServiceImpl extends AbstractFeedback implements MessageServi
 	}
 
 	private Message convertMessageDtoToMessage(MessageDto messageDto) {
-		String newUser = messageDto.getUser();
-		String newToUser = messageDto.getToUser();
-		String newMessage = messageDto.getMessage();
-		LocalDateTime newEventTime = messageDto.getEventTime();
-		Message message = new Message(newUser, newToUser, newMessage, newEventTime);
+		Message message = new Message();
+		message.setToUser(messageDto.getToUser());
+		message.setUser(messageDto.getToUser());
+		message.setMessage(messageDto.getMessage());
+		message.setEventTime(messageDto.getEventTime());
 		return message;
 	}
 

@@ -12,4 +12,6 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 	public List<Message> findByUser(String fromUser);
 
 	public List<Message> findByUserAndEventTimeBetween(String fromUser, LocalDateTime début, LocalDateTime fin);
+
+	public List<Message> findAllByOrderByEventTimeDesc();
 }

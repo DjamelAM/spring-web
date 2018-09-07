@@ -1,4 +1,4 @@
-package com.formation;
+package com.formation.servlet.view;
 
 import javax.servlet.FilterRegistration;
 import javax.servlet.ServletException;
@@ -10,12 +10,14 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import com.formation.web.config.WebConfig;
+
 public class ViewWebApplicationInitializer implements WebApplicationInitializer {
 	@Override
 	public void onStartup(javax.servlet.ServletContext servletContext) throws ServletException {
 		// Load Spring web application configuration
 		AnnotationConfigWebApplicationContext webContext = new AnnotationConfigWebApplicationContext();
-		webContext.register(AppConfig.class);
+		webContext.register(WebConfig.class);
 		servletContext.addListener(new ContextLoaderListener(webContext));
 
 		// Create and register the DispatcherServlet

@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "messages")
-public class Message implements Comparable<Message> {
+public class Message {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
@@ -24,18 +24,6 @@ public class Message implements Comparable<Message> {
 	LocalDateTime eventTime;
 	@Column(name = "TO_USER")
 	String toUser;
-
-	public Message() {
-
-	}
-
-	public Message(String user, String toUser, String message, LocalDateTime now) {
-
-		this.user = user;
-		this.message = message;
-		this.eventTime = now;
-		this.toUser = toUser;
-	}
 
 	public int getId() {
 		return id;
@@ -84,8 +72,4 @@ public class Message implements Comparable<Message> {
 				+ ", toUser=" + toUser + "]";
 	}
 
-	@Override
-	public int compareTo(Message o) {
-		return getEventTime().compareTo(o.getEventTime());
-	}
 }

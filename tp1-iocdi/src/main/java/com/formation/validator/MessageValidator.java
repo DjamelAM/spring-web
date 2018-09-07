@@ -1,5 +1,6 @@
 package com.formation.validator;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -23,7 +24,7 @@ public class MessageValidator implements Validator {
 		ValidationUtils.rejectIfEmpty(errors, "message", "required", "Le message est obligatoire");
 
 		MessageDto messageDto = (MessageDto) target;
-		if (!(messageDto.getUser().isEmpty()) && !(Character.isUpperCase(messageDto.getUser().charAt(0)))) {
+		if (StringUtils.isNotBlank(messageDto.getUser()) && !(Character.isUpperCase(messageDto.getUser().charAt(0)))) {
 
 			errors.rejectValue("user", "negativeValue", new Object[] { "'user'" }, "user a besoin d'une majuscule");
 

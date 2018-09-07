@@ -1,6 +1,5 @@
-package com.formation.controller;
+package com.formation.controller.view;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -12,13 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.formation.model.MessageDto;
-import com.formation.service.MessageService;
 import com.formation.validator.MessageValidator;
 
 @Controller
 public class AjoutController {
-	@Autowired
-	MessageService serv;
 
 	// @RequestMapping(value = "/admin/new", method = RequestMethod.GET)
 	// public ModelAndView newMessage() {
@@ -43,7 +39,7 @@ public class AjoutController {
 		if (result.hasErrors()) {
 			return "admin/create_message";
 		}
-		serv.send(messageDto);
+		// serv.send(messageDto);
 		return "admin/create_message";
 	}
 
